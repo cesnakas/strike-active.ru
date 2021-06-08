@@ -1,0 +1,74 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Главная", 
+		"/", 
+		Array(), 
+		Array("0"=>""), 
+		"" 
+	),
+	Array(
+		"Каталог", 
+		"/category/", 
+		Array(), 
+		Array("0"=>""), 
+		"" 
+	),
+	Array(
+		"О нас", 
+		"/about/", 
+		Array(), 
+		Array("0"=>"", "menu_item_class"=>"about"), 
+		"" 
+	),
+	Array(
+		"Новости", 
+		"/news/", 
+		Array(), 
+		Array("0"=>""), 
+		"" 
+	),
+	Array(
+		"Акции", 
+		"/actions/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Уценка", 
+		"/utsenka/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Опт", 
+		"/opt/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Доставка", 
+		"/dostavka/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/kontakty/", 
+		Array(), 
+		Array("0"=>""), 
+		"" 
+	),
+	Array(
+		"Личный кабинет", 
+		"/profile/", 
+		Array(), 
+		Array(), 
+		"CSite::InGroup(array(5,7,8,9,12))" 
+	)
+);
+?>

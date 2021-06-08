@@ -1,0 +1,54 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+Header set X-Frame-Options SAMEORIGIN
+<IfModule mod_php5.c>
+	php_flag allow_call_time_pass_reference 1
+	php_flag session.use_trans_sid off
+
+	#php_value display_errors 1
+
+	#php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+
+	RewriteBase /
+	RewriteRule ^(.*)index\.php$ $1 [R=301,L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_URI} !(.*)/$
+	RewriteCond %{REQUEST_URI} !/acrit.exportproplus/avito_personal_belongings.xml$
+	RewriteCond %{REQUEST_URI} !/acrit.exportproplus/avito_personal_belongings.xml?encoding=utf-8$
+	RewriteRule ^(.*[^/])$ https://strike-active.ru/$1/ [L,R=301]
+	
+	RewriteCond %{HTTP_HOST} (.*)
+	RewriteCond %{REQUEST_URI} xml/$ [NC]
+	RewriteRule ^(.*)(/)$ $1 [L,R=301]
+
+	RewriteCond %{HTTP_HOST} ^www\.
+	RewriteRule (.*) https://strike-active.ru/$1 [L,R=301]
+
+	RewriteCond %{SERVER_PORT} !^443$
+	RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+	RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+	RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+	Redirect 301 /personal/basket.php/ https://strike-active.ru/basket/
+
+
+</IfModule>
+
+<IfModule mod_dir.c>
+	DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresByType image/jpeg "access plus 3 day"
+	ExpiresByType image/gif "access plus 3 day"
+</IfModule>
